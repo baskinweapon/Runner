@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000002, guid: ce60b42c5ec7244a8b6cdf67bd43e0d2, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -343,16 +343,7 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  _playerPrefab: {fileID: 4703530334653838079, guid: e7837758afcf547caa6e3ba1623a6f02, type: 3}
   countBlocks: 20
-  _blocksPrefabs:
-  - {fileID: 109574546652427256, guid: 3b97e11e2b92640749418ba02e35d682, type: 3}
-  - {fileID: 27694067661254474, guid: 1cfa27938f849427392988108938c8e3, type: 3}
-  - {fileID: 6539632613958769183, guid: cb63b38b54dac4c7f946a39a2b00b7aa, type: 3}
-  - {fileID: 5738479850253351891, guid: 9e12db4d26e6b4730bf140605c5c4087, type: 3}
-  - {fileID: 6315377977391162890, guid: f58b76b50c4fd43a6ab6024f4eff50da, type: 3}
-  - {fileID: 4708374918507566512, guid: ff0d4f31f074040408e1149a2d45c9b3, type: 3}
-  - {fileID: 5462827371670448611, guid: 86cbf8ffb520e44d4a052c47d8815057, type: 3}
 --- !u!4 &1659533831
 Transform:
   m_ObjectHideFlags: 0

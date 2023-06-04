@@ -164,8 +164,8 @@ namespace DefaultNamespace.Blocks {
             return null;
         }
 
-        // private void OnDestroy() {
-        //     Addressables.Release(loadHandle);
-        // }
+        private void OnDestroy() {
+            Addressables.Release(loadHandle);
+        }
     }
 }
