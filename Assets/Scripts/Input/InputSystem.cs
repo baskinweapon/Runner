@@ -15,7 +15,7 @@ public class InputSystem : IInputSystem {
         _playerInput = new InputActions();
         _playerInput.Enable();
         
-        _playerInput.Player.Jump.canceled += Jump;
+        _playerInput.Player.Jump.performed += Jump;
     }
 
     #region CallbackFunctions
@@ -29,7 +29,7 @@ public class InputSystem : IInputSystem {
 
     private bool IsClickOnUI() {
         var pointerEventData = new PointerEventData(EventSystem.current) {
-            position = Mouse.current.position.ReadValue()
+            position = _playerInput.UI.Point.ReadValue<Vector2>()
         };
              
         var raycastResultsList = new List<RaycastResult>();

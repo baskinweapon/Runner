@@ -12,18 +12,18 @@ public class GroundBlock : BaseBlock {
     AsyncOperationHandle<IList<GameObject>> loadHandle;
     
     // load boosters
-    public IEnumerator Start() {
-        loadHandle = Addressables.LoadAssetsAsync<GameObject>(
-            keys,
-            addressable => {
-                _boosters.Add(addressable);
-                if (_boosters.Count == 3) {
-                    Spawn();
-                }
-            }, Addressables.MergeMode.Union,
-            false);
-        yield return loadHandle;
-    }
+    // public IEnumerator Start() {
+    //     loadHandle = Addressables.LoadAssetsAsync<GameObject>(
+    //         keys,
+    //         addressable => {
+    //             _boosters.Add(addressable);
+    //             if (_boosters.Count == 3) {
+    //                 Spawn();
+    //             }
+    //         }, Addressables.MergeMode.Union,
+    //         false);
+    //     yield return loadHandle;
+    // }
     
     private void Spawn() {
         
@@ -38,7 +38,7 @@ public class GroundBlock : BaseBlock {
         
     }
     
-    private void OnDestroy() {
-        Addressables.Release(loadHandle);
-    }
+    // private void OnDestroy() {
+    //     Addressables.Release(loadHandle);
+    // }
 }

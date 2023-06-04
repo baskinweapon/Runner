@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DefaultNamespace.Blocks;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
@@ -21,7 +22,7 @@ public class GameManager : Singleton<GameManager> {
         ServicesInit();
         OnGameOver += GameOver;
     }
-
+    
     #region Services
     
     public IInputSystem inputSystem;
@@ -51,7 +52,7 @@ public class GameManager : Singleton<GameManager> {
     }
 
     public void Restart() {
-        SceneManager.LoadScene(1);
+        Addressables.LoadSceneAsync(_reference);
         Play();
     }
 

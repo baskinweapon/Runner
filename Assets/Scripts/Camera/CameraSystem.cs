@@ -12,8 +12,8 @@ public class CameraSystem: ICameraSystem {
         _virtualCamera = _camera.GetComponentInChildren<CinemachineVirtualCamera>();
     }
     
-    public Camera GetCamera() {
-        return _camera;
+    public CinemachineVirtualCamera GetCamera() {
+        return _virtualCamera;
     }
     
     public async void Shake(float duration, float magnitude) {

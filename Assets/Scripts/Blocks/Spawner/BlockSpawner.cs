@@ -18,6 +18,9 @@ namespace DefaultNamespace.Blocks {
     }
     
     public class BlockSpawner : MonoBehaviour {
+        [SerializeField]
+        private AssetReference playerPrefab;
+        
         public int countBlocks = 5;
         private List<string> keys = new List<string>() {"block"};
         
@@ -35,7 +38,7 @@ namespace DefaultNamespace.Blocks {
                     }
                 }, Addressables.MergeMode.Union,
                 false);
-
+            
             yield return loadHandle;
         }
         
@@ -73,6 +76,18 @@ namespace DefaultNamespace.Blocks {
             // spawn finish block
             var finishBlock = Instantiate(GetBlockByType(BlockType.Finish), transform);
             finishBlock.transform.position = lastBlock.transform.position + lastDirection * 5;
+            
+            PlayerSpawn();
+        }
+
+        private void PlayerSpawn() {
+            Addressables.InstantiateAsync(playerPrefab).Completed += handle => {
+                var player = handle.Result.GetComponent<Player>();
+                player.transform.position = Vector3.zero;
+                player.transform.rotation = Quaternion.identity;
+                GameManager.instance.serviceLocator.GetCameraSystem().GetCamera().m_Follow = player.transform;
+                GameManager.instance.serviceLocator.GetCameraSystem().GetCamera().m_LookAt = player.transform;
+            };
         }
 
         // calculate next block type
@@ -149,8 +164,8 @@ namespace DefaultNamespace.Blocks {
             return null;
         }
 
-        private void OnDestroy() {
-            Addressables.Release(loadHandle);
-        }
+        // private void OnDestroy() {
+        //     Addressables.Release(loadHandle);
+        // }
     }
 }
