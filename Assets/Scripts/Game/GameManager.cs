@@ -63,7 +63,6 @@ public class GameManager : Singleton<GameManager> {
     }
     
     private void OnDestroy() {
-        inputSystem.GetInputSystem().OnDestroy();
         OnGameOver -= GameOver;
     }
 

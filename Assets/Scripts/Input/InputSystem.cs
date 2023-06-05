@@ -8,8 +8,8 @@ using UnityEngine.InputSystem;
 public class InputSystem : IInputSystem {
     private InputActions _playerInput;
 
-    public Action OnJump;
-    
+    public Action OnJump { get; set; }
+
     public InputSystem() {
         
         _playerInput = new InputActions();

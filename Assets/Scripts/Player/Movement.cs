@@ -8,7 +8,7 @@ public class Movement : MonoBehaviour {
     public Rigidbody rb;
 
     private void OnEnable() {
-        GameManager.instance.inputSystem.GetInputSystem().OnJump += Jump;
+        GameManager.instance.inputSystem.OnJump += Jump;
         _animator = GetComponent<Animator>();
     }
 
@@ -43,6 +43,6 @@ public class Movement : MonoBehaviour {
     }
 
     private void OnDisable() {
-        GameManager.instance.inputSystem.GetInputSystem().OnJump -= Jump;
+        GameManager.instance.inputSystem.OnJump -= Jump;
     }
 }
