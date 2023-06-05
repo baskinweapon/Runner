@@ -48,16 +48,30 @@ public class Player : MonoBehaviour {
         _movement.speed = _speed;
         _isShieldActive = false;
     }
-    
+
+    private Coroutine fastCoroutine;
     public void Fast(float time) {
         _movement.speed = 10;
-        Invoke(nameof(Normal), time);
+        if (fastCoroutine != null) StopCoroutine(fastCoroutine);
+        fastCoroutine = StartCoroutine(FastProcess(time));
+    }
+
+    IEnumerator FastProcess(float time) {
+        yield return new WaitForSeconds(time);
+        Normal();
     }
 
     private bool _isShieldActive;
+    private Coroutine shieldCoroutine;
     public void Shield(float time) {
         _isShieldActive = true;
-        Invoke(nameof(Normal), time);
+        if (shieldCoroutine != null) StopCoroutine(shieldCoroutine);
+        shieldCoroutine = StartCoroutine(ShieldProcess(time));
+    }
+    
+    IEnumerator ShieldProcess(float time) {
+        yield return new WaitForSeconds(time);
+        Normal();
     }
     
     private void OnDisable() {
