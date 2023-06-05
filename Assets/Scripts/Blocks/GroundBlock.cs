@@ -27,7 +27,7 @@ public class GroundBlock : BaseBlock {
     
     private void Spawn() {
         
-        if (Random.Range(0, 10) > GameManager.instance.gameSettings.boostSettings.probabilitySpawn) {
+        if (Random.Range(0, 10) < GameManager.instance.gameSettings.boostSettings.probabilitySpawn) {
             var boost = Instantiate(_boosters[Random.Range(0, _boosters.Count)]);
             boost.transform.position = transform.position + Vector3.up * 1.5f;
             boost.transform.rotation = transform.rotation;

@@ -54,11 +54,13 @@ namespace DefaultNamespace.Blocks {
             var lastBlockType = BlockType.Ground;
             
             for (int i = 0; i < countBlocks; i++) {
+                // which type of block will be next depends on the previous one
                 lastBlockType = CalculateNextBlockType(lastBlockType);
                 var block = Instantiate(GetBlockByType(lastBlockType), transform);
                 var dir = lastDirection;
                 if (lastBlockType == BlockType.Rotate) {
                     var rotateBlock = block.GetComponent<RotateBlock>();
+                    // if the previous block was a turn, then the next one will be straight
                     if (dir != Vector3.forward) {
                         rotateBlock.direction = Vector3.forward;
                     } else 

@@ -18,6 +18,8 @@ namespace UI {
         private void Start() {
             GameManager.instance.OnGameOver += Death;
             GameManager.instance.OnStatistics += CreateStatistics;
+            
+            //buttons
             restartButton.onClick.AddListener(Restart);
             continueButton.onClick.AddListener(Continue);
         }
@@ -45,8 +47,24 @@ namespace UI {
         
         private void CreateBlockUI(BlockType type, int count) {
             var blockUI = Instantiate(blockUIPrefab, content);
-            blockUI.nameBlock.text = type.ToString();
+            blockUI.nameBlock.text = TranslateType(type);
             blockUI.countBlock.text = count.ToString();
+        }
+
+        private string TranslateType(BlockType type) {
+            if (type == BlockType.Hole) {
+                return "Пропасть";
+            }
+            if (type == BlockType.Law) {
+                return "Пила";
+            }
+            if (type == BlockType.Obstacle) {
+                return "Препятствие";
+            }
+            if (type == BlockType.HalfHole) {
+                return "Половина пропасти";
+            }
+            return "";
         }
         
         private void DestroyContent() {
@@ -58,6 +76,7 @@ namespace UI {
         private void OnDisable() {
             GameManager.instance.OnGameOver -= Death;
             GameManager.instance.OnStatistics -= CreateStatistics;
+            
             restartButton.onClick.RemoveListener(Restart);
             continueButton.onClick.RemoveListener(Continue);
         }

@@ -29,12 +29,14 @@ public class Player : MonoBehaviour {
     private void ContinueAfterWatchVideo() {
         Lives = 3;
         _movement.rb.velocity = Vector3.zero;
+        // move player forward
         transform.position += transform.forward * 4f;
+        // slow player
         _movement.speed /= 8;
-        StartCoroutine(nameof(StartCoroutine));
+        StartCoroutine(nameof(ReturnToNormalSpeedProcess));
     }
 
-    IEnumerator StartCoroutine() {
+    IEnumerator ReturnToNormalSpeedProcess() {
         while (_movement.speed <= _speed) {
             _movement.speed += Time.deltaTime;
             yield return null;

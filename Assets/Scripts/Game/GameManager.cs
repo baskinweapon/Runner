@@ -1,14 +1,16 @@
 using System;
 using System.Collections.Generic;
 using DefaultNamespace.Blocks;
-using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
-using UnityEngine.SceneManagement;
+
 
 public class GameManager : Singleton<GameManager> {
     public ServiceLocator serviceLocator;
+    [Header("Game Settings")]
     public GameSettings gameSettings;
+    [Header("Game Scene reference")]
+    public AssetReference _reference;
     
     public Action OnContinueAfterWatchVideoAction;
     public Action OnGameOver;
@@ -33,7 +35,6 @@ public class GameManager : Singleton<GameManager> {
     }
     #endregion
     
-    public AssetReference _reference;
     public void StartGame() {
         Addressables.LoadSceneAsync(_reference);
     }
@@ -42,7 +43,7 @@ public class GameManager : Singleton<GameManager> {
     public void FinishGame() {
         Pause();
         OnFinishGame?.Invoke();
-        // add difficulty
+        // add difficulty after win
         gameSettings.blockSettings.spawnCount += 30;
     }
     

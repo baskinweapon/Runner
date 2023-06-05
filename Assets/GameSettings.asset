@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GameSettings
   m_EditorClassIdentifier: 
   boostSettings:
-    probabilitySpawn: 6
+    probabilitySpawn: 5
     speedUpTime: 5
     shieldTime: 2
     healthCount: 1

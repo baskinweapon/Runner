@@ -13,6 +13,7 @@ public class Movement : MonoBehaviour {
     }
 
     private bool _isGround;
+    // main player movement
     public void Update() {
         _isGround = OnGround();
         transform.position += Time.deltaTime * speed * direction;

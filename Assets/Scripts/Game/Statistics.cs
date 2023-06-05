@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using DefaultNamespace.Blocks;
 using UnityEngine;
@@ -12,13 +11,14 @@ public class Statistics : MonoBehaviour {
         GameManager.instance.OnFinishGame += GetStatistics;
     }
 
-    private GameObject lastBlock;
+    private GameObject _lastBlock;
+    // find block under player
     private void Update() {
         if (Physics.Raycast(transform.position + Vector3.up, Vector3.down, out var hit, 100f)) {
             if (hit.transform.gameObject.layer != LayerMask.NameToLayer("Ground")) return;
-            if (lastBlock != hit.transform.gameObject) {
-                lastBlock = hit.transform.gameObject;
-                var block = lastBlock.GetComponent<BaseBlock>();
+            if (_lastBlock != hit.transform.gameObject) {
+                _lastBlock = hit.transform.gameObject;
+                var block = _lastBlock.GetComponent<BaseBlock>();
                 if (block) {
                     AddBlock(block.type);
                 }

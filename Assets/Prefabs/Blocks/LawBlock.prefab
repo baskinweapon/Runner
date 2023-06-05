@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6333810016795225121}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.4, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 0.1, y: 2, z: 0.6}
   m_Children: []
   m_Father: {fileID: 8737295480260104127}
@@ -190,8 +190,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.20942955, y: 0.7428112, z: 0.41911212}
-  m_Center: {x: -0.0008453846, y: 0.87140584, z: 0.0069200518}
+  m_Size: {x: 0.20942955, y: 0.49839973, z: 0.19632132}
+  m_Center: {x: -0.0008453846, y: 0.7492001, z: 0.008981002}
 --- !u!114 &6315377977391162890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,4 +204,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29f97cf9206149a1a709df0635043c59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   law: {fileID: 4210594387077519263}
+  speedSaw: 5
