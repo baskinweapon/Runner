@@ -45,12 +45,4 @@ public class InputSystem : IInputSystem {
     public Vector2 GetMousePosition() {
         return _playerInput.UI.Point.ReadValue<Vector2>();
     }
-    
-    public InputSystem GetInputSystem() {
-        return this;
-    }
-
-    public void OnDestroy() {
-        _playerInput.Player.Jump.performed -= Jump;
-    }
 }

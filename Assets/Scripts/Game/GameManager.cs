@@ -33,6 +33,7 @@ public class GameManager : Singleton<GameManager> {
         serviceLocator = new ServiceLocator();
         inputSystem = serviceLocator.GetInputSystem();
     }
+    
     #endregion
     
     public void StartGame() {
@@ -48,7 +49,7 @@ public class GameManager : Singleton<GameManager> {
     }
     
     // player lose
-    public void GameOver() {
+    private void GameOver() {
         Pause();
     }
 
@@ -68,12 +69,11 @@ public class GameManager : Singleton<GameManager> {
 
     #region PlayPause
 
-    
-    public void Pause() {
+    private void Pause() {
         Time.timeScale = 0;
     }
 
-    public void Play() {
+    private void Play() {
         Time.timeScale = 1;
     }
 

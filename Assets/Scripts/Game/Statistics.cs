@@ -12,7 +12,7 @@ public class Statistics : MonoBehaviour {
     }
 
     private GameObject _lastBlock;
-    // find block under player
+    // find block under player. because player can jump, we can not use trigger
     private void Update() {
         if (Physics.Raycast(transform.position + Vector3.up, Vector3.down, out var hit, 100f)) {
             if (hit.transform.gameObject.layer != LayerMask.NameToLayer("Ground")) return;
@@ -34,8 +34,8 @@ public class Statistics : MonoBehaviour {
             _blockStatistics.Add(type, _blockStatistics.ContainsKey(type) ? _blockStatistics[type] + 1 : 1);
         }
     }
-    
-    public void GetStatistics() {
+
+    private void GetStatistics() {
         GameManager.instance.OnStatistics?.Invoke(_blockStatistics);
     }
 

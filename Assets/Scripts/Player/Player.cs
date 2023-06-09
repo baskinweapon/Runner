@@ -19,10 +19,12 @@ public class Player : MonoBehaviour {
     
     private Movement _movement;
     private float _speed;
+    
     private void Start() {
         _movement = GetComponent<Movement>();
         _speed = _movement.speed;
         GameManager.instance.OnContinueAfterWatchVideoAction += ContinueAfterWatchVideo;
+        
         Lives = 3;
     }
 
@@ -35,7 +37,41 @@ public class Player : MonoBehaviour {
         _movement.speed /= 8;
         StartCoroutine(nameof(ReturnToNormalSpeedProcess));
     }
+    
+    #region BoostBehavior
+    
+    private void Normal() {
+        _movement.speed = _speed;
+        _isShieldActive = false;
+    }
 
+    // up speed
+    public void Fast(float time) {
+        _movement.speed = 10;
+        if (fastCoroutine != null) StopCoroutine(fastCoroutine);
+        fastCoroutine = StartCoroutine(FastProcess(time));
+    }
+    
+    // set shield
+    private bool _isShieldActive;
+    public void Shield(float time) {
+        _isShieldActive = true;
+        if (shieldCoroutine != null) StopCoroutine(shieldCoroutine);
+        shieldCoroutine = StartCoroutine(ShieldProcess(time));
+    }
+    
+    private Coroutine fastCoroutine;
+    IEnumerator FastProcess(float time) {
+        yield return new WaitForSeconds(time);
+        Normal();
+    }
+    
+    private Coroutine shieldCoroutine;
+    IEnumerator ShieldProcess(float time) {
+        yield return new WaitForSeconds(time);
+        Normal();
+    }
+    
     IEnumerator ReturnToNormalSpeedProcess() {
         while (_movement.speed <= _speed) {
             _movement.speed += Time.deltaTime;
@@ -44,35 +80,7 @@ public class Player : MonoBehaviour {
         _movement.speed = _speed;
     }
     
-    public void Normal() {
-        _movement.speed = _speed;
-        _isShieldActive = false;
-    }
-
-    private Coroutine fastCoroutine;
-    public void Fast(float time) {
-        _movement.speed = 10;
-        if (fastCoroutine != null) StopCoroutine(fastCoroutine);
-        fastCoroutine = StartCoroutine(FastProcess(time));
-    }
-
-    IEnumerator FastProcess(float time) {
-        yield return new WaitForSeconds(time);
-        Normal();
-    }
-
-    private bool _isShieldActive;
-    private Coroutine shieldCoroutine;
-    public void Shield(float time) {
-        _isShieldActive = true;
-        if (shieldCoroutine != null) StopCoroutine(shieldCoroutine);
-        shieldCoroutine = StartCoroutine(ShieldProcess(time));
-    }
-    
-    IEnumerator ShieldProcess(float time) {
-        yield return new WaitForSeconds(time);
-        Normal();
-    }
+    #endregion
     
     private void OnDisable() {
         GameManager.instance.OnContinueAfterWatchVideoAction -= ContinueAfterWatchVideo;

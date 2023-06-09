@@ -10,7 +10,7 @@ public class PlayerEffects : MonoBehaviour {
     }
 
     private void Death() {
-        
+        // just imagine that we have some animation here
     }
 
     private int _prevLives = 3;

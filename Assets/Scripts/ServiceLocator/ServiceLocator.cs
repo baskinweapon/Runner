@@ -7,6 +7,6 @@ public class ServiceLocator {
     }
     
     public ICameraSystem GetCameraSystem() {
-        return new CameraSystem();
+        return new CameraSystem(); // because we need to create new instance of camera system immediately
     }
 }
