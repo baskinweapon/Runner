@@ -34,7 +34,7 @@ public class GroundBlock : BaseBlock {
         }
     }
 
-    protected override void Do(Player player) {
+    protected override void Triggered(Player player) {
         
     }
     

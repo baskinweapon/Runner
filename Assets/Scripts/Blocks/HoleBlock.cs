@@ -1,6 +1,6 @@
 
 public class HoleBlock : BaseBlock {
-    protected override void Do(Player player) {
+    protected override void Triggered(Player player) {
         player.Lives--;
     }
 }

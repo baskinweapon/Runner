@@ -1,5 +1,5 @@
 public class ObstacleBlock : BaseBlock {
-    protected override void Do(Player player) {
+    protected override void Triggered(Player player) {
         player.Lives -= 1;
     }
 }

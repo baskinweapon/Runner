@@ -8,10 +8,10 @@ public abstract class BaseBlock : MonoBehaviour {
             if (other.gameObject.CompareTag("Player")) {
                   var player = other.GetComponent<Player>();
                   if (player) {
-                        Do(player);
+                        Triggered(player);
                   }
             }    
       }
 
-      protected abstract void Do(Player player);
+      protected abstract void Triggered(Player player);
 }

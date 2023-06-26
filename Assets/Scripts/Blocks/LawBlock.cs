@@ -22,7 +22,7 @@ public class LawBlock : BaseBlock {
         law.transform.localPosition = Vector3.zero;
     }
 
-    protected override void Do(Player player) {
+    protected override void Triggered(Player player) {
         player.Lives--;
     }
 }
