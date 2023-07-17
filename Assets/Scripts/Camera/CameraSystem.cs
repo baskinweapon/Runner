@@ -9,10 +9,13 @@ public class CameraSystem: ICameraSystem {
     
     public CameraSystem() {
         _camera = Camera.main;
-        _virtualCamera = _camera.GetComponentInChildren<CinemachineVirtualCamera>();
+        if (_camera)
+            _virtualCamera = _camera.GetComponentInChildren<CinemachineVirtualCamera>();
     }
     
     public CinemachineVirtualCamera GetCamera() {
+        if (_virtualCamera == null)
+            _virtualCamera = _camera.GetComponentInChildren<CinemachineVirtualCamera>();
         return _virtualCamera;
     }
     

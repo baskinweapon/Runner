@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using DefaultNamespace.Blocks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using Zenject;
 
 
 public class GameManager : Singleton<GameManager> {
-    public ServiceLocator serviceLocator;
     [Header("Game Settings")]
     public GameSettings gameSettings;
     [Header("Game Scene reference")]
@@ -21,20 +21,8 @@ public class GameManager : Singleton<GameManager> {
     protected override void Awake() {
         base.Awake();
         
-        ServicesInit();
         OnGameOver += GameOver;
     }
-    
-    #region Services
-    
-    public IInputSystem inputSystem;
-    
-    private void ServicesInit() {
-        serviceLocator = new ServiceLocator();
-        inputSystem = serviceLocator.GetInputSystem();
-    }
-    
-    #endregion
     
     public void StartGame() {
         Addressables.LoadSceneAsync(_reference);
@@ -44,6 +32,7 @@ public class GameManager : Singleton<GameManager> {
     public void FinishGame() {
         Pause();
         OnFinishGame?.Invoke();
+        
         // add difficulty after win
         gameSettings.blockSettings.spawnCount += 30;
     }

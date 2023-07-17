@@ -1,3 +1,7 @@
+
+using System;
+
+[Obsolete("Use Zenject instead")]
 public class ServiceLocator {
     private IInputSystem inputSystem;
     private ICameraSystem cameraSystem;

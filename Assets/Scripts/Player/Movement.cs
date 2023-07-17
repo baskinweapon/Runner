@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 public class Movement : MonoBehaviour {
     private Animator _animator;
@@ -7,8 +8,10 @@ public class Movement : MonoBehaviour {
     public float jumpPower;
     public Rigidbody rb;
 
+    [Inject] private IInputSystem _inputSystem;
+    
     private void OnEnable() {
-        GameManager.instance.inputSystem.OnJump += Jump;
+        _inputSystem.OnJump += Jump;
         _animator = GetComponent<Animator>();
     }
 
@@ -43,6 +46,6 @@ public class Movement : MonoBehaviour {
     }
 
     private void OnDisable() {
-        GameManager.instance.inputSystem.OnJump -= Jump;
+        _inputSystem.OnJump -= Jump;
     }
 }
